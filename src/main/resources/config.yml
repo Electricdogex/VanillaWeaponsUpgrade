@@ -1,0 +1,78 @@
+# Vanilla Weapons Upgrade 1.1.0. Designed for a modest 7GB Paper server.
+# The radius is horizontal crater radius. Depth is below the detonated block.
+explosions:
+  super-tnt:
+    terrain-radius: 32
+    max-depth: 15
+    visual-radius: 40
+    fuse-ticks: 80
+    damage: 22.0
+  formidibomb:
+    terrain-radius: 100
+    max-depth: 25
+    visual-radius: 150
+    fuse-ticks: 200
+    damage: 40.0
+  max-active-jobs: 6
+  max-super-jobs: 2
+  max-formidibomb-jobs: 1
+  # Both caps apply: the smaller one wins. Budget excludes the engine's chunk-loading overhead.
+  max-block-changes-per-tick: 16384
+  time-budget-ms: 10.0
+  pause-above-mspt: 45.0
+  resume-below-mspt: 40.0
+  # The engine has one loaded explosion chunk at a time, no chunk generation.
+  max-blast-entities: 250
+  drop-block-items: false
+  save-every-ticks: 200
+  # Safety / physics: block changes are applied with neighbour physics disabled.
+  # Floating sand and non-updated fluids may remain until later neighbour updates.
+  suppress-block-physics: true
+  # Custom craters cannot be automatically rolled back.
+protection:
+  spawn-radius: 64
+  disabled-worlds: []
+  protect-bedrock: true
+  protected-block-types:
+    - BARRIER
+    - END_PORTAL_FRAME
+    - END_PORTAL
+    - NETHER_PORTAL
+    - COMMAND_BLOCK
+    - CHAIN_COMMAND_BLOCK
+    - REPEATING_COMMAND_BLOCK
+    - STRUCTURE_BLOCK
+    - JIGSAW
+  # NOTE: WorldGuard/GriefPrevention region flags are NOT integrated in v1.1.0.
+  # Disable destructive explosives in claimed worlds until an integration is added.
+fallout:
+  enabled: true
+  radiation:
+    enabled: true
+  super-tnt:
+    charged-creepers-min: 3
+    charged-creepers-max: 5
+    mutation-probability: 0.35
+  formidibomb:
+    charged-creepers-min: 10
+    charged-creepers-max: 15
+    mutation-probability: 0.80
+  max-mutations-per-blast: 60
+  creeper-despawn-seconds: 90
+  max-plugin-creepers-per-world: 20
+  protect-named-animals: true
+  convert-sand-to-glass: true
+  glass-surface-layers: 2
+  glass-conversion-probability: 1.0
+  winter-days: 3
+  winter-overworld-only: true
+visuals:
+  enabled: true
+  fallout-seconds: 120
+  heat-wave-radius-multiplier: 2.0
+  heat-wave-ignites-wood: true
+  max-heat-fires: 2048
+  formidibomb-flash: true
+  # Counted, bounded particles on an expanding ring; not millions of debris entities.
+  ring-points: 24
+  ring-steps: 12
